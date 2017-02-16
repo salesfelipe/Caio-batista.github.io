@@ -26,6 +26,7 @@
     <link href="css/styles.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Laboratório 2 -  Visualização de dados - Caio Batista</title>
+      <!-- D3.js -->
 </head>
 <div>
 
@@ -101,12 +102,90 @@
                             });
 
                         </script>
-
-
-
-
-
                     </div>
+                </div>
+
+                <div class="col-xs-12">
+                  <h1>Refatorando o gráfico anterior!</h1>
+                  <style>
+                    body {
+                      font-family: 'Open Sans', sans-serif;
+                      font-size: 11px;
+                      font-weight: 300;
+                      fill: #242424;
+                      text-align: center;
+                      text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+                      cursor: default;
+                    }
+                    
+                    .legend {
+                      font-family: 'Raleway', sans-serif;
+                      fill: #333333;
+                    }
+                    
+                    .tooltip {
+                      fill: #333333;
+                    }
+                  </style>
+
+                  <div class="radarChart"></div>
+
+                  <script src="radarChart.js"></script> 
+                  <script>
+                    ////////////////////////////////////////////////////////////// 
+                    //////////////////////// Set-Up ////////////////////////////// 
+                    ////////////////////////////////////////////////////////////// 
+                    var margin = {top: 100, right: 100, bottom: 100, left: 100},
+                      width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+                      height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+                        
+                    ////////////////////////////////////////////////////////////// 
+                    ////////////////////////// Data ////////////////////////////// 
+                    ////////////////////////////////////////////////////////////// 
+                    var data = [
+                          [//Primeira Pergunta
+                          {axis:"Número 0",value:0.03501946},
+                          {axis:"1",value:0.0155642},
+                          {axis:"2",value:0.0311284},
+                          {axis:"3",value:0.07782101},
+                          {axis:"4",value:0.07782101},
+                          {axis:"5",value:0.1322957},
+                          {axis:"6",value:0.1128405},
+                          {axis:"7",value:0.2840467},
+                          {axis:"8",value:0.155642},
+                          {axis:"9",value:0.06225681}      
+                          ], [//Sétima
+                          {axis:"Número 0",value:0.01945525},
+                          {axis:"1",value:0.0155642},
+                          {axis:"2",value:0.04280156},
+                          {axis:"3",value:0.06614786},
+                          {axis:"4",value:0.06225681},
+                          {axis:"5",value:0.1322957},
+                          {axis:"6",value:0.1128405},
+                          {axis:"7",value:0.2840467},
+                          {axis:"8",value:0.155642},
+                          {axis:"9",value:0.06225681}      
+                          ]
+                        ];
+                    ////////////////////////////////////////////////////////////// 
+                    //////////////////// Draw the Chart ////////////////////////// 
+                    ////////////////////////////////////////////////////////////// 
+                    var color = d3.scaleBand()
+                      .range(["#f0d43a","#2657c1"]);
+                      
+                    var radarChartOptions = {
+                      w: width,
+                      h: height,
+                      margin: margin,
+                      maxValue: 0.28,
+                      levels: 5,
+                      roundStrokes: true,
+                      color: color
+                    };
+                    //Call function to draw the Radar chart
+                    RadarChart(".radarChart", data, radarChartOptions);
+                  </script>
+
 
 
                 </div>
@@ -126,7 +205,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3.min.js"
         integrity="sha256-zbE3mv7cXuSkW7mhK6Y5vnY6eXmPZPPRUYpUcNfVM/A="
         crossorigin="anonymous"></script>
-<script src="https://d3js.org/d3.v4.min.js"></script>
 
 
 
