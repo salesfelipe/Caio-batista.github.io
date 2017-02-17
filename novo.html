@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
-    <title>Smoothed D3.js Radar Chart</title>
+    <title>Lab 3 - Visualização de Dados</title>
 
     <!-- Google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
@@ -10,87 +10,58 @@
 
     <!-- D3.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <link href="/css/bootstrap.paper.min.css" rel="stylesheet">
+    <link href='/newVersion/chart.css' rel='stylesheet' type='text/css'>
     
-    <style>
-      body {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 11px;
-        font-weight: 300;
-        fill: #242424;
-        text-align: center;
-        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-        cursor: default;
-      }
-      
-      .legend {
-        font-family: 'Raleway', sans-serif;
-        fill: #333333;
-      }
-      
-      .tooltip {
-        fill: #333333;
-      }
-    </style>
   
   </head>
   <body>
+    <div class="container">
+        <h2>Quais os números mais escolhidos na primeira pergunta? E na sétima?</h2>
+        <p>Para entendermos a visualização, vemos o eixo X como as respostas, tanto para a primeira pergunta como para a
+        segunda. E no eixo Y vemos a frequência das respostas em porcentagem.</p>
+        <p>Para entender a parte do eixo X, temos que os nomes seguem o padrão Pri_X  e Set_X, que são as respostas
+        para a primeira pergunta e sétima do formulário. Sendo X o número escolhido</p>
 
-    <div class="radarChart"></div>
+        <h3> Versão original: </h3>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+
+            <div class="col-md-6">
+                <img src="newVersion/v1.png"></img>
+                <p class="legenda">Gráfico feito por Caio Batista. <a href="http://caio-batista.github.io/" target="_blank">link</a></p>
+            </div>
+
+            <div class="col-md-3"></div>
+        </div>
+
+        <h3> Versão refatorada: </h3>
+    
+        <div class="row">
+            
+            <div class="row">
+                <div class="col-md-3"></div>
+
+                <div class="col-md-6">
+                    <div class="radarChart"></div>
+                    <p class="legenda">A parte <b class="cor-azul">#Azul</b> representa as respostas da sétima pergunta
+                    e a parte <b class="cor-amarelo">#Amarela</b> representa as respostas da primeira pergunta.</p>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <p> A minha ideia ao refatorar o gráfico foi sobrepor os dados de forma a melhorar a comparação individual. Outro problema que notei no gráfico antigo foi que não era possível ver a informação exata de cada dado, sendo assim eu adicionei um tooltip sobre os pontos para mostrar com precisão a informação para o usuário. Como nós temos os números de 0 - 9 também me pareceu interessante fugir do formato sequencial em linha e tentar o radial, como um relógio, decisão puramente estética.  </p>
+            </div>
+                
+        </div>
+
+
+
+    </div>
+
 
     <script src="radarChart.js"></script> 
-    <script>
-      ////////////////////////////////////////////////////////////// 
-      //////////////////////// Set-Up ////////////////////////////// 
-      ////////////////////////////////////////////////////////////// 
-      var margin = {top: 100, right: 100, bottom: 100, left: 100},
-        width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-        height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-          
-      ////////////////////////////////////////////////////////////// 
-      ////////////////////////// Data ////////////////////////////// 
-      ////////////////////////////////////////////////////////////// 
-      var data = [
-            [//Primeira Pergunta
-            {axis:"Número 0",value:0.03501946},
-            {axis:"1",value:0.0155642},
-            {axis:"2",value:0.0311284},
-            {axis:"3",value:0.07782101},
-            {axis:"4",value:0.07782101},
-            {axis:"5",value:0.1322957},
-            {axis:"6",value:0.1128405},
-            {axis:"7",value:0.2840467},
-            {axis:"8",value:0.155642},
-            {axis:"9",value:0.06225681}      
-            ], [//Sétima
-            {axis:"Número 0",value:0.01945525},
-            {axis:"1",value:0.0155642},
-            {axis:"2",value:0.04280156},
-            {axis:"3",value:0.06614786},
-            {axis:"4",value:0.06225681},
-            {axis:"5",value:0.1322957},
-            {axis:"6",value:0.1128405},
-            {axis:"7",value:0.2840467},
-            {axis:"8",value:0.155642},
-            {axis:"9",value:0.06225681}      
-            ]
-          ];
-      ////////////////////////////////////////////////////////////// 
-      //////////////////// Draw the Chart ////////////////////////// 
-      ////////////////////////////////////////////////////////////// 
-      var color = d3.scale.ordinal()
-        .range(["#f0d43a","#2657c1"]);
-        
-      var radarChartOptions = {
-        w: width,
-        h: height,
-        margin: margin,
-        maxValue: 0.28,
-        levels: 5,
-        roundStrokes: true,
-        color: color
-      };
-      //Call function to draw the Radar chart
-      RadarChart(".radarChart", data, radarChartOptions);
-    </script>
+    <script src="newVersion/chart.js"></script>
   </body>
 </html>

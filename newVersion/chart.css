@@ -15,7 +15,8 @@ html{
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     color: #00ADB5;
     padding-top: 10%;
     text-align: center;
@@ -38,46 +39,36 @@ img {
     margin: auto;
 }
 
-#legenda {
+.legenda {
     font-size: 14px;
     text-align: center;
 }
 
-#chart{
-    background: rgba(238, 238, 238, 0.2);
+img {
+    padding-top: 3%;
+    margin: auto;
+    width: 100%;
 }
 
-.grid line {
-  stroke: #EEEEEE ;
-  stroke-opacity: 0.7;
-  shape-rendering: geometricPrecision;
+.legend {
+    font-family: 'Raleway', sans-serif;
+    fill: #EEE;
 }
 
-.grid path {
-  stroke-width: 0;
+.tooltip {
+    fill: #333333;
 }
 
-g path{
-    stroke: #EEEEEE;
-}
-
-g line{
-    stroke: #EEEEEE;
-}
 
 g text{
     font-size: 15px;
     fill: #EEEEEE;    
 }
 
-div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 250px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: #EEEEEE;	
-    border: 3px;
-    border-color: black;
-    pointer-events: none;
+.cor-azul {
+    color: #00ADB5;
+}
+
+.cor-amarelo {
+    color: #f0d43a;
 }
